@@ -3,6 +3,8 @@
 // --- DOM Elements ---
 const inputField = document.getElementById("query");
 const consultBtn = document.getElementById("consult-btn");
+consultBtn.disabled = true; 
+consultBtn.textContent = "LOADING_DATA...";
 const loader = document.getElementById("loader");
 const modalOverlay = document.getElementById("modal-overlay");
 const closeBtn = document.getElementById("close-btn");
