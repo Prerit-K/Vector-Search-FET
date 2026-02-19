@@ -1,0 +1,381 @@
+/* --- BLUEPRINT THEME: SYSTEM SCHEMATIC --- */
+:root {
+    /* The Palette */
+    --paper: #2B4365;        /* Deep Blueprint Blue */
+    --ink: #FFFFFF;          /* Technical White */
+    --faded-ink: #8FA3BF;    /* Faded Grid Lines */
+    --accent: #FFD700;       /* Safety Yellow (Attention) */
+    
+    /* The Typography - Pure Monospace */
+    --font-main: 'Courier Prime', monospace;
+    
+    /* The Physics - Robotic & Precise */
+    --ease-tech: cubic-bezier(0.23, 1, 0.32, 1); /* Sharp snap */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-main);
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    /* THE GRID PATTERN */
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 40px 40px; /* Large technical grid */
+}
+
+/* --- Layout Containers --- */
+.container {
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    z-index: 2;
+    border: 2px solid var(--ink); /* Main Frame */
+    padding: 40px;
+    background: rgba(43, 67, 101, 0.9); /* Slight transparency */
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.3); /* Hard shadow */
+}
+
+/* --- Header Section --- */
+header {
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 1rem;
+    text-align: left; /* Align left like a document */
+}
+
+.logo {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-shadow: none;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: var(--faded-ink);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- Input Area (The Command Line) --- */
+.entry-slip {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    color: var(--accent); /* Yellow label */
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+textarea {
+    width: 100%;
+    height: 120px;
+    background: transparent;
+    border: 2px dashed var(--faded-ink); /* Dashed Construction Line */
+    color: var(--ink);
+    font-family: var(--font-main);
+    font-size: 1.2rem;
+    padding: 15px;
+    resize: none;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+textarea:focus {
+    border-color: var(--accent);
+    background: rgba(255, 215, 0, 0.05);
+}
+
+textarea::placeholder {
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+}
+
+/* --- The Button (The Switch) --- */
+button#consult-btn {
+    width: 100%;
+    padding: 18px;
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    font-family: var(--font-main);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.1s linear;
+}
+
+button#consult-btn:hover {
+    background: var(--accent);
+    color: var(--paper); /* Invert colors */
+    box-shadow: 0 0 15px var(--accent); /* Glow effect */
+}
+
+button#consult-btn:active {
+    transform: scale(0.98);
+}
+
+button:disabled {
+    border-color: var(--faded-ink);
+    color: var(--faded-ink);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* --- Loader (System Processing) --- */
+#loader {
+    margin-top: 1.5rem;
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.typing-text::after {
+    content: "█"; /* Block cursor */
+    animation: blink 0.8s infinite;
+    margin-left: 5px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* --- The Modal (Technical Spec Sheet) --- */
+#modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* Darker overlay */
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s linear, visibility 0.2s;
+}
+
+#modal-overlay:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+}
+
+.index-card {
+    background: var(--paper);
+    width: 90%;
+    max-width: 700px;
+    
+    /* FIX: Stop it from growing taller than the screen */
+    max-height: 85vh; 
+    display: flex;
+    flex-direction: column;
+    
+    border: 2px solid var(--ink);
+    padding: 0;
+    position: relative;
+    box-shadow: 20px 20px 0px rgba(0,0,0,0.5);
+    transform: translateY(20px);
+    transition: transform 0.3s var(--ease-tech);
+}
+
+#modal-overlay:not(.hidden) .index-card {
+    transform: translateY(0);
+}
+
+#close-btn {
+    position: absolute;
+    top: 0; right: 0;
+    background: var(--accent);
+    color: var(--paper);
+    border: none;
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#close-btn:hover {
+    background: #fff;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+/* Visual Side (Left) */
+.card-visual {
+    flex: 1;
+    border-right: 2px solid var(--ink);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.2);
+}
+
+#book-cover-container {
+    width: 100%;
+    max-width: 200px;
+    aspect-ratio: 2/3;
+    position: relative;
+    border: 1px solid var(--faded-ink);
+}
+
+/* Crosshair Markers on Image */
+#book-cover-container::after {
+    content: "+";
+    position: absolute;
+    bottom: -10px; right: -10px;
+    color: var(--accent);
+    font-size: 20px;
+}
+#book-cover-container::before {
+    content: "+";
+    position: absolute;
+    top: -10px; left: -10px;
+    color: var(--accent);
+    font-size: 20px;
+}
+
+#book-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.2); /* Make cover look printed */
+    mix-blend-mode: luminosity;
+}
+
+#cover-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--paper);
+    color: var(--faded-ink);
+    border: 1px dashed var(--faded-ink);
+    text-align: center;
+    padding: 10px;
+    font-size: 0.8rem;
+}
+
+/* Data Side (Right) */
+.card-text {
+    flex: 1.5;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    
+    /* FIX: Enable scrolling for long text */
+    overflow-y: auto; 
+    
+    /* FIX: Custom Scrollbar for Blueprint Look */
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--paper);
+}
+
+/* Webkit Scrollbar Styling (Chrome/Edge/Safari) */
+.card-text::-webkit-scrollbar {
+    width: 8px;
+}
+.card-text::-webkit-scrollbar-track {
+    background: var(--paper); 
+    border-left: 1px solid var(--faded-ink);
+}
+.card-text::-webkit-scrollbar-thumb {
+    background-color: var(--accent); /* Yellow scrollbar */
+    border: 1px solid var(--paper);
+}
+
+.meta-header h2 {
+    font-family: var(--font-main);
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    color: var(--accent); /* Highlight title */
+}
+
+.meta-header h3 {
+    font-family: var(--font-main);
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 1rem;
+}
+
+.rating-display {
+    font-size: 0.9rem;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    display: inline-block;
+    padding: 4px 8px;
+    margin-bottom: 1rem;
+}
+
+.separator {
+    border: 0;
+    border-bottom: 1px dashed var(--faded-ink);
+    margin: 1.5rem 0;
+}
+
+.archivist-note {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.label {
+    display: block;
+    font-weight: 700;
+    color: var(--faded-ink);
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .card-content { flex-direction: column; }
+    .card-visual { border-right: none; border-bottom: 2px solid var(--ink); padding: 20px; }
+    #book-cover-container { max-width: 140px; }
+    .container { width: 95%; padding: 20px; }
+}
+
+.hidden {
+    display: none !important;
+    opacity: 0;
+    pointer-events: none;
+}
