@@ -62,6 +62,11 @@ function initLocalArchivist() {
 
             isLocalReady = true;
             console.log(`Archivist Ready: Indexed ${localLibrary.length} rich volumes.`);
+            const mainBtn = document.getElementById("consult-btn");
+            if (mainBtn) {
+                mainBtn.disabled = false;
+                mainBtn.textContent = "RUN_QUERY";
+            }
         },
         error: function(err) {
             console.error("Failed to load library:", err);
