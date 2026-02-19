@@ -141,11 +141,13 @@ button#consult-btn:active {
     transform: scale(0.98);
 }
 
-button:disabled {
+button#consult-btn:disabled {
     border-color: var(--faded-ink);
     color: var(--faded-ink);
     cursor: not-allowed;
     box-shadow: none;
+    pointer-events: none; /* This is the magic line! It completely kills the hover animation */
+    opacity: 0.5; /* Makes it look faded and inactive */
 }
 
 /* --- Loader (System Processing) --- */
