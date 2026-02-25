@@ -112,3 +112,7 @@ Once you run the code, Colab will generate two graphs that you can show your tea
 
 1. **The Heatmap:** This grid will clearly display the exact $r$ value.
 2. **The Regression Plot:** This will plot every book in your CSV as a dot and draw the red linear regression line through the data.
+
+To view the Results:
+
+https://colab.research.google.com/drive/1M44dDSwxBF8XuYgxSzEU6JdKoBxLlxgM?usp=sharing
