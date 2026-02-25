@@ -67,6 +67,9 @@ To visually prove the statistical nature of the dataset to the instructor, run t
 ### The Python Code
 
 ```python
+#Github Link  = https://github.com/Prerit-K/Vector-Search-FET/tree/main
+#Website Link = https://prerit-k.github.io/Vector-Search-FET/
+
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -103,6 +106,7 @@ plt.title('Linear Regression: Rating vs. Number of Ratings')
 plt.xlabel('Number of Ratings')
 plt.ylabel('Average Rating')
 plt.show()
+
 
 ```
 
