@@ -11,7 +11,7 @@ The application runs entirely in the browser without needing a backend server.
 ### 1. The Tech Stack
 
 * **Frontend:** Pure HTML5, CSS3 (Custom Variables, CSS Grid/Flexbox), and Vanilla JavaScript.
-* **Styling Theme:** "System Schematic" — heavily relies on `Courier Prime`, dashed technical borders, and a stark `Deep Blueprint Blue` (`#2B4365`) and `Safety Yellow` (`#FFD700`) color palette.
+* **Styling Theme:** "System Schematic" heavily relies on `Courier Prime`, dashed technical borders, and a stark `Deep Blueprint Blue` (`#2B4365`) and `Safety Yellow` (`#FFD700`) color palette.
 * **Data Parsing:** Uses `papaparse.min.js` to asynchronously load and parse the local `books.csv` file directly in the browser.
 
 ### 2. The Search Algorithm (Concept Mapping & Scoring)
